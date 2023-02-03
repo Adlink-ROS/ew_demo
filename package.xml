@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="2">
+  <name>ew_demo</name>
+  <version>1.0.0</version>
+  <description>2023 Embedded World Demo for ADLINK RQX-58G</description>
+  <maintainer email="ting.chang@adlinktech.com">Ting Chang</maintainer>
+  <author>Ting Chang</author>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>
+
+

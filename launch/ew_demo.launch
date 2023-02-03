@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  
+  <!-- Ouster LiDAR -->
+  <include file="$(find ouster_ros)/launch/sensor.launch">
+  </include>
+  
+  <!-- Projection for Lidar and Camera port_1 -->
+  <include file="$(find cam_lidar_calib)/launch/tier4-c1_ouster-os1_projetion.launch">
+    <arg name="camera_name"           value="port_1"/>
+    <arg name="cam_config_file_path"  value="$(find cam_lidar_calib)/config/tier4_c1_85_calibrated_param_1920x1280.yaml"/>
+  </include>
+  
+  <!-- Projection for Lidar and Camera port_3 -->
+  <include file="$(find cam_lidar_calib)/launch/tier4-c1_ouster-os1_projetion.launch">
+    <arg name="camera_name"           value="port_3"/>
+    <arg name="cam_config_file_path"  value="$(find cam_lidar_calib)/config/tier4_c1_120_calibrated_param_1920x1280.yaml"/>
+  </include>
+
+  <!-- Projection for Lidar and Camera port_5 -->
+  <include file="$(find cam_lidar_calib)/launch/tier4-c1_ouster-os1_projetion.launch">
+    <arg name="camera_name"           value="port_5"/>
+    <arg name="cam_config_file_path"  value="$(find cam_lidar_calib)/config/tier4_c1_85_calibrated_param_1920x1280.yaml"/>
+  </include>
+  
+  <!-- Projection for Lidar and Camera port_7 -->
+  <include file="$(find cam_lidar_calib)/launch/tier4-c1_ouster-os1_projetion.launch">
+    <arg name="camera_name"           value="port_7"/>
+    <arg name="cam_config_file_path"  value="$(find cam_lidar_calib)/config/tier4_c1_120_calibrated_param_1920x1280.yaml"/>
+  </include>
+  
+  <!-- Deep Learning for Camera port_1 -->
+  <include file="$(find ros_deep_learning)/launch/ew_demo_AI.launch">
+    <arg name="camera_name"           value="port_1"/>
+  </include>
+  
+  <!-- Deep Learning for Camera port_3 -->
+  <include file="$(find ros_deep_learning)/launch/ew_demo_AI.launch">
+    <arg name="camera_name"           value="port_3"/>
+  </include>
+  
+  <!-- Deep Learning for Camera port_5 -->
+  <include file="$(find ros_deep_learning)/launch/ew_demo_AI.launch">
+    <arg name="camera_name"           value="port_5"/>
+  </include>
+  
+  <!-- Deep Learning for Camera port_7 -->
+  <include file="$(find ros_deep_learning)/launch/ew_demo_AI.launch">
+    <arg name="camera_name"           value="port_7"/>
+  </include>
+  
+  <!-- Rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ew_demo)/rviz/demo_view.rviz"/>
+
+</launch>

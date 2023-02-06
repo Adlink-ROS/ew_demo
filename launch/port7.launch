@@ -9,7 +9,7 @@
   <arg name="sync"    default="true"/>
 
   <!-- ROS configuration -->
-  <arg name="camera_name"       default="tier_c1_120"/>
+  <arg name="camera_name"       default="tier4_c1_120"/>
   <arg name="publish_frame"     default="false"/>
   <arg name="open_rviz"         default="false"/>
   <arg name="node_start_delay"  default="0.0" />  

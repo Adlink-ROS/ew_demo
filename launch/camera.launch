@@ -1,6 +1,6 @@
 <launch>
   <!-- GStreamer configuration -->
-  <arg name="index"   default="3"/>
+  <arg name="index"   default="1"/>
   <arg name="fps"     default="30/1"/>
   <arg name="width"   default="1920"/>
   <arg name="height"  default="1280"/>
@@ -9,7 +9,7 @@
   <arg name="sync"    default="true"/>
 
   <!-- ROS configuration -->
-  <arg name="camera_name"       default="tier4_c1_120"/>
+  <arg name="camera_name"       default="tier4_c1_85"/>
   <arg name="publish_frame"     default="false"/>
   <arg name="open_rviz"         default="false"/>
   <arg name="node_start_delay"  default="0.0" />  
@@ -20,8 +20,8 @@
     <param name="camera_info_url" value="file://$(find cam_lidar_calib)/config/$(arg camera_name)_calibrated_param_1920x1280.yaml"/>
     <param name="frame_id"        value="port_$(arg index)"/>
     <param name="sync_sink"       value="$(arg sync)"/>
-    <!-- <param name="gscam_config" value="v4l2src device=/dev/video$(arg index) ! video/x-raw, format=UYVY,framerate=$(arg fps),width=$(arg width),height=$(arg height) ! videoconvert"/> -->
     <param name="gscam_config" value="v4l2src device=/dev/gmsl/tier4-isx021-cam$(arg index) ! video/x-raw, format=UYVY,framerate=$(arg fps),width=$(arg width),height=$(arg height) ! videoconvert"/>
+    <!-- <param name="gscam_config" value="v4l2src device=/dev/gmsl/tier4-isx021-cam$(arg index) ! videoconvert ! videoscale ! video/x-raw, format=UYVY,framerate=$(arg fps),width=$(arg width),height=$(arg height) ! videoconvert"/> -->
   </node>
 
   <!-- gmsl_camera_frame -->

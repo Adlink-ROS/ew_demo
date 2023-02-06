@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+
+  <!-- Bringup Camera port_1 -->
+  <include file="$(find ew_demo)/launch/camera.launch">
+    <arg name="index" value="1"/>
+  </include>
+  <!-- Bringup Camera port_3 -->
+  <include file="$(find ew_demo)/launch/camera.launch">
+    <arg name="index" value="3"/>
+  </include>
+  <!-- Bringup Camera port_5 -->
+  <include file="$(find ew_demo)/launch/camera.launch">
+    <arg name="index" value="5"/>
+  </include>
+  <!-- Bringup Camera port_7 -->
+  <include file="$(find ew_demo)/launch/camera.launch">
+    <arg name="index" value="7"/>
+  </include>
+  
+</launch>

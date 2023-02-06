@@ -62,16 +62,12 @@ roscore
 
 # Terminal 2
 roslaunch ew_demo ew_demo.launch
+```
 
+After running ew_demo.launch for 15 seconds, you should see four images (port1/3/5/7) shown on RViz. If any images are not shown, please run below script multiple times to reset the camera until all the images are successfully shown.
+
+```bash
 # Terminal 3
-roslaunch ew_demo port1.launch
-
-# Terminal 4
-roslaunch ew_demo port3.launch
-
-# Terminal 5
-roslaunch ew_demo port5.launch
-
-# Terminal 6
-roslaunch ew_demo port7.launch
+roslaunch ew_demo reset_camera.launch
+# If the image is still not shown, run this script again until succeed.
 ```

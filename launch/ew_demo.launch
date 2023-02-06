@@ -29,6 +29,9 @@
     <arg name="cam_config_file_path"  value="$(find cam_lidar_calib)/config/tier4_c1_120_calibrated_param_1920x1280.yaml"/>
   </include>
   
+  <!-- Bring up all the camera -->
+  <include file="$(find ew_demo)/launch/bringup_camera.launch"></include>
+  
   <!-- Deep Learning for Camera port_1 -->
   <include file="$(find ros_deep_learning)/launch/ew_demo_AI.launch">
     <arg name="camera_name"           value="port_1"/>

@@ -1,36 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <launch>
   
+  <!-- Bring up all the camera -->
+  <include file="$(find ew_demo)/launch/bringup_camera.launch"></include>
+  
   <!-- Ouster LiDAR -->
   <include file="$(find ouster_ros)/launch/sensor.launch">
   </include>
   
   <!-- Projection for Lidar and Camera port_1 -->
-  <include file="$(find cam_lidar_calib)/launch/tier4-c1_ouster-os1_projetion.launch">
+  <include file="$(find cam_lidar_calib)/launch/sensor_fusion.launch">
     <arg name="camera_name"           value="port_1"/>
     <arg name="cam_config_file_path"  value="$(find cam_lidar_calib)/config/tier4_c1_85_calibrated_param_1920x1280.yaml"/>
+    <arg name="x_min" value="-1.5"/>
+    <arg name="x_max" value="1.5"/>
+    <arg name="y_min" value="0.2"/>
+    <arg name="y_max" value="10.0"/>  
+    <arg name="z_min" value="-2.5"/>
+    <arg name="z_max" value="2.5"/>
   </include>
   
   <!-- Projection for Lidar and Camera port_3 -->
-  <include file="$(find cam_lidar_calib)/launch/tier4-c1_ouster-os1_projetion.launch">
+  <include file="$(find cam_lidar_calib)/launch/sensor_fusion.launch">
     <arg name="camera_name"           value="port_3"/>
     <arg name="cam_config_file_path"  value="$(find cam_lidar_calib)/config/tier4_c1_120_calibrated_param_1920x1280.yaml"/>
+    <arg name="x_min" value="0.2"/>
+    <arg name="x_max" value="10.0"/>
+    <arg name="y_min" value="-1.5"/>
+    <arg name="y_max" value="1.5"/>  
+    <arg name="z_min" value="-2.5"/>
+    <arg name="z_max" value="2.5"/>
   </include>
 
   <!-- Projection for Lidar and Camera port_5 -->
-  <include file="$(find cam_lidar_calib)/launch/tier4-c1_ouster-os1_projetion.launch">
+  <include file="$(find cam_lidar_calib)/launch/sensor_fusion.launch">
     <arg name="camera_name"           value="port_5"/>
     <arg name="cam_config_file_path"  value="$(find cam_lidar_calib)/config/tier4_c1_85_calibrated_param_1920x1280.yaml"/>
+    <arg name="x_min" value="0.2"/>
+    <arg name="x_max" value="10.0"/>
+    <arg name="y_min" value="-1.5"/>
+    <arg name="y_max" value="1.5"/>  
+    <arg name="z_min" value="-2.5"/>
+    <arg name="z_max" value="2.5"/>
   </include>
   
   <!-- Projection for Lidar and Camera port_7 -->
-  <include file="$(find cam_lidar_calib)/launch/tier4-c1_ouster-os1_projetion.launch">
+  <include file="$(find cam_lidar_calib)/launch/sensor_fusion.launch">
     <arg name="camera_name"           value="port_7"/>
     <arg name="cam_config_file_path"  value="$(find cam_lidar_calib)/config/tier4_c1_120_calibrated_param_1920x1280.yaml"/>
+    <arg name="x_min" value="-1.5"/>
+    <arg name="x_max" value="1.5"/>
+    <arg name="y_min" value="-10.0"/>
+    <arg name="y_max" value="-0.2"/>  
+    <arg name="z_min" value="-2.5"/>
+    <arg name="z_max" value="2.5"/>
   </include>
-  
-  <!-- Bring up all the camera -->
-  <include file="$(find ew_demo)/launch/bringup_camera.launch"></include>
   
   <!-- Deep Learning for Camera port_1 -->
   <include file="$(find ros_deep_learning)/launch/ew_demo_AI.launch">
@@ -54,5 +78,10 @@
   
   <!-- Rviz -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ew_demo)/rviz/demo_view.rviz"/>
+
+  <!-- workaround to fix gscam not responding -->
+  <include file="$(find ew_demo)/launch/reset_camera.launch">
+    <arg name="node_start_delay"  default="15.0" />  
+  </include>
 
 </launch>

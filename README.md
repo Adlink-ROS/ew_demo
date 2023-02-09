@@ -33,6 +33,7 @@
 mkdir -p ~/ew_demo_ws/src
 cd ~/ew_demo_ws/src
 git clone https://github.com/Adlink-ROS/ew_demo.git
+git clone https://github.com/Adlink-ROS/pc_filter_ros.git
 git clone https://github.com/Adlink-ROS/ros_deep_learning.git -b ew_demo
 git clone https://github.com/Adlink-ROS/cam_lidar_calib.git -b ew_demo
 git clone --recurse-submodules https://github.com/Adlink-ROS/ouster-ros.git -b ew_demo
@@ -54,20 +55,15 @@ catkin build --cmake-args -DCMAKE_BUILD_TYPE=Release
 # Then, add `source ~/ew_demo_ws/devel/setup.bash` to the .bashrc or ROS Menu
 ```
 
-## Run scripts
+## Run calibration script
 
 ```bash
-# Terminal 1
-roscore
-
-# Terminal 2
-roslaunch ew_demo ew_demo.launch
+# example for camera port1
+roslaunch ew_demo calibration.launch port1:=true
 ```
 
-After running ew_demo.launch for 15 seconds, you should see four images (port1/3/5/7) shown on RViz. If any images are not shown, please run below script multiple times to reset the camera until all the images are successfully shown.
+## Run demo script
 
 ```bash
-# Terminal 3
-roslaunch ew_demo reset_camera.launch
-# If the image is still not shown, run this script again until succeed.
+roslaunch ew_demo ew_demo.launch
 ```

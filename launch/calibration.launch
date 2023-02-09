@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  
+  <arg name="port1" default="false"/>
+  <arg name="port3" default="false"/>
+  <arg name="port5" default="false"/>
+  <arg name="port7" default="false"/>
+  
+  <!-- Bringup Camera port_1 -->
+  <include if="$(arg port1)" file="$(find ew_demo)/launch/camera.launch">
+    <arg name="index"       value="1"/>
+    <arg name="camera_name" value="tier4_c1_85"/>
+  </include>
+  <!-- Bringup Camera port_3 -->
+  <include if="$(arg port3)" file="$(find ew_demo)/launch/camera.launch">
+    <arg name="index"       value="3"/>
+    <arg name="camera_name" value="tier4_c1_120"/>
+  </include>
+  <!-- Bringup Camera port_5 -->
+  <include if="$(arg port5)" file="$(find ew_demo)/launch/camera.launch">
+    <arg name="index"       value="5"/>
+    <arg name="camera_name" value="tier4_c1_85"/>
+  </include>
+  <!-- Bringup Camera port_7 -->
+  <include if="$(arg port7)" file="$(find ew_demo)/launch/camera.launch">
+    <arg name="index"       value="7"/>
+    <arg name="camera_name" value="tier4_c1_120"/>
+  </include>
+
+  <!-- Ouster LiDAR -->
+  <include file="$(find ouster_ros)/launch/sensor.launch">
+  </include>
+  
+  <!-- Bringup pc_filter_ros to filter the pointcloud for port1 parameter -->
+  <include if="$(arg port1)" file="$(find pc_filter_ros)/launch/pc_filter.launch">
+    <arg name="x_min" value="-0.5"/>
+    <arg name="x_max" value="0.5"/>
+    <arg name="y_min" value="0.2"/>
+    <arg name="y_max" value="2.5"/>  
+    <arg name="z_min" value="-2.5"/>
+    <arg name="z_max" value="2.5"/>
+  </include>
+  
+  <include if="$(arg port3)" file="$(find pc_filter_ros)/launch/pc_filter.launch">
+    <arg name="x_min" value="0.2"/>
+    <arg name="x_max" value="2.5"/>
+    <arg name="y_min" value="-0.5"/>
+    <arg name="y_max" value="0.5"/>  
+    <arg name="z_min" value="-2.5"/>
+    <arg name="z_max" value="2.5"/>
+  </include>
+
+  <include if="$(arg port5)" file="$(find pc_filter_ros)/launch/pc_filter.launch">
+    <arg name="x_min" value="0.2"/>
+    <arg name="x_max" value="2.5"/>
+    <arg name="y_min" value="-0.5"/>
+    <arg name="y_max" value="0.5"/>  
+    <arg name="z_min" value="-2.5"/>
+    <arg name="z_max" value="2.5"/>
+  </include>
+  
+  <include if="$(arg port7)" file="$(find pc_filter_ros)/launch/pc_filter.launch">
+    <arg name="x_min" value="-0.5"/>
+    <arg name="x_max" value="0.5"/>
+    <arg name="y_min" value="-2.5"/>
+    <arg name="y_max" value="-0.2"/>  
+    <arg name="z_min" value="-2.5"/>
+    <arg name="z_max" value="2.5"/>
+  </include>
+
+  <!-- Calibration for Lidar and Camera port_1 -->
+  <include if="$(arg port1)" file="$(find cam_lidar_calib)/launch/calibration.launch">
+    <arg name="camera_name"           value="port_1"/>
+    <arg name="cam_config_file_path"  value="$(find cam_lidar_calib)/config/tier4_c1_85_calibrated_param_1920x1280.yaml"/>
+    <arg name="x_min" value="-0.5"/>
+    <arg name="x_max" value="0.5"/>
+    <arg name="y_min" value="0.2"/>
+    <arg name="y_max" value="2.5"/>  
+    <arg name="z_min" value="-2.5"/>
+    <arg name="z_max" value="2.5"/>
+  </include>
+  
+  <!-- Calibration for Lidar and Camera port_3 -->
+  <include if="$(arg port3)" file="$(find cam_lidar_calib)/launch/calibration.launch">
+    <arg name="camera_name"           value="port_3"/>
+    <arg name="cam_config_file_path"  value="$(find cam_lidar_calib)/config/tier4_c1_120_calibrated_param_1920x1280.yaml"/>
+    <arg name="x_min" value="0.2"/>
+    <arg name="x_max" value="2.5"/>
+    <arg name="y_min" value="-0.5"/>
+    <arg name="y_max" value="0.5"/>  
+    <arg name="z_min" value="-2.5"/>
+    <arg name="z_max" value="2.5"/>
+  </include>
+
+  <!-- Calibration for Lidar and Camera port_5 -->
+  <include if="$(arg port5)" file="$(find cam_lidar_calib)/launch/calibration.launch">
+    <arg name="camera_name"           value="port_5"/>
+    <arg name="cam_config_file_path"  value="$(find cam_lidar_calib)/config/tier4_c1_85_calibrated_param_1920x1280.yaml"/>
+    <arg name="x_min" value="0.2"/>
+    <arg name="x_max" value="2.5"/>
+    <arg name="y_min" value="-0.5"/>
+    <arg name="y_max" value="0.5"/>  
+    <arg name="z_min" value="-2.5"/>
+    <arg name="z_max" value="2.5"/>
+  </include>
+  
+  <!-- Calibration for Lidar and Camera port_7 -->
+  <include if="$(arg port7)" file="$(find cam_lidar_calib)/launch/calibration.launch">
+    <arg name="camera_name"           value="port_7"/>
+    <arg name="cam_config_file_path"  value="$(find cam_lidar_calib)/config/tier4_c1_120_calibrated_param_1920x1280.yaml"/>
+    <arg name="x_min" value="-0.5"/>
+    <arg name="x_max" value="0.5"/>
+    <arg name="y_min" value="-2.5"/>
+    <arg name="y_max" value="-0.2"/>
+    <arg name="z_min" value="-2.5"/>
+    <arg name="z_max" value="2.5"/>
+  </include>
+  
+  <!-- Rviz -->
+  <node if="$(arg port1)" name="rviz_port1" pkg="rviz" type="rviz" args="-d $(find ew_demo)/rviz/calibration_port1.rviz"/>
+  <node if="$(arg port3)" name="rviz_port3" pkg="rviz" type="rviz" args="-d $(find ew_demo)/rviz/calibration_port3.rviz"/>
+  <node if="$(arg port5)" name="rviz_port5" pkg="rviz" type="rviz" args="-d $(find ew_demo)/rviz/calibration_port5.rviz"/>
+  <node if="$(arg port7)" name="rviz_port7" pkg="rviz" type="rviz" args="-d $(find ew_demo)/rviz/calibration_port7.rviz"/>
+
+  <!-- workaround to fix gscam not responding -->
+  <include if="$(arg port1)" file="$(find ew_demo)/launch/reset_single_camera.launch">
+    <arg name="index"  default="1" />  
+  </include>
+  <include if="$(arg port3)" file="$(find ew_demo)/launch/reset_single_camera.launch">
+    <arg name="index"  default="3" />  
+  </include>
+  <include if="$(arg port5)" file="$(find ew_demo)/launch/reset_single_camera.launch">
+    <arg name="index"  default="5" />  
+  </include>
+  <include if="$(arg port7)" file="$(find ew_demo)/launch/reset_single_camera.launch">
+    <arg name="index"  default="7" />  
+  </include>
+
+</launch>

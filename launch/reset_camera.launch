@@ -5,21 +5,22 @@
   <arg name="index3" default="3"/>
   <arg name="index5" default="5"/>
   <arg name="index7" default="7"/>
-  
+  <arg name="node_start_delay"  default="0.0" />  
+
   <!-- reset camera -->
-  <node name="reset_camera1" pkg="ew_demo" type="reset_camera" output="screen">
+  <node name="reset_camera1" pkg="ew_demo" type="reset_camera" output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' ">
     <param name="index" value="$(arg index1)"/>
   </node>
   
-  <node name="reset_camera3" pkg="ew_demo" type="reset_camera" output="screen">
+  <node name="reset_camera3" pkg="ew_demo" type="reset_camera" output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' ">
     <param name="index" value="$(arg index3)"/>
   </node>
   
-  <node name="reset_camera5" pkg="ew_demo" type="reset_camera" output="screen">
+  <node name="reset_camera5" pkg="ew_demo" type="reset_camera" output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' ">
     <param name="index" value="$(arg index5)"/>
   </node>
   
-  <node name="reset_camera7" pkg="ew_demo" type="reset_camera" output="screen">
+  <node name="reset_camera7" pkg="ew_demo" type="reset_camera" output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' ">
     <param name="index" value="$(arg index7)"/>
   </node>  
 

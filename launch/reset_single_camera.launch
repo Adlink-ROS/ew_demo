@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  
+  <arg name="index" default="1"/>
+
+  <!-- reset camera -->
+  <node name="reset_camera" pkg="ew_demo" type="reset_camera" output="screen">
+    <param name="index" value="$(arg index)"/>
+  </node>
+
+</launch>

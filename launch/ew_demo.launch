@@ -12,10 +12,10 @@
   <include file="$(find cam_lidar_calib)/launch/sensor_fusion.launch">
     <arg name="camera_name"           value="port_1"/>
     <arg name="cam_config_file_path"  value="$(find cam_lidar_calib)/config/tier4_c1_85_calibrated_param_1920x1280.yaml"/>
-    <arg name="x_min" value="-1.5"/>
-    <arg name="x_max" value="1.5"/>
-    <arg name="y_min" value="0.2"/>
-    <arg name="y_max" value="10.0"/>  
+    <arg name="x_min" value="0.6"/>
+    <arg name="x_max" value="3.2"/>
+    <arg name="y_min" value="-0.7"/>
+    <arg name="y_max" value="0.7"/>  
     <arg name="z_min" value="-2.5"/>
     <arg name="z_max" value="2.5"/>
   </include>
@@ -24,10 +24,10 @@
   <include file="$(find cam_lidar_calib)/launch/sensor_fusion.launch">
     <arg name="camera_name"           value="port_3"/>
     <arg name="cam_config_file_path"  value="$(find cam_lidar_calib)/config/tier4_c1_120_calibrated_param_1920x1280.yaml"/>
-    <arg name="x_min" value="0.2"/>
-    <arg name="x_max" value="10.0"/>
-    <arg name="y_min" value="-1.5"/>
-    <arg name="y_max" value="1.5"/>  
+    <arg name="x_min" value="-0.7"/>
+    <arg name="x_max" value="0.7"/>
+    <arg name="y_min" value="-3.0"/>
+    <arg name="y_max" value="-0.2"/>  
     <arg name="z_min" value="-2.5"/>
     <arg name="z_max" value="2.5"/>
   </include>
@@ -36,10 +36,10 @@
   <include file="$(find cam_lidar_calib)/launch/sensor_fusion.launch">
     <arg name="camera_name"           value="port_5"/>
     <arg name="cam_config_file_path"  value="$(find cam_lidar_calib)/config/tier4_c1_85_calibrated_param_1920x1280.yaml"/>
-    <arg name="x_min" value="0.2"/>
-    <arg name="x_max" value="10.0"/>
-    <arg name="y_min" value="-1.5"/>
-    <arg name="y_max" value="1.5"/>  
+    <arg name="x_min" value="-0.7"/>
+    <arg name="x_max" value="0.7"/>
+    <arg name="y_min" value="-3.0"/>
+    <arg name="y_max" value="-0.2"/>  
     <arg name="z_min" value="-2.5"/>
     <arg name="z_max" value="2.5"/>
   </include>
@@ -48,10 +48,10 @@
   <include file="$(find cam_lidar_calib)/launch/sensor_fusion.launch">
     <arg name="camera_name"           value="port_7"/>
     <arg name="cam_config_file_path"  value="$(find cam_lidar_calib)/config/tier4_c1_120_calibrated_param_1920x1280.yaml"/>
-    <arg name="x_min" value="-1.5"/>
-    <arg name="x_max" value="1.5"/>
-    <arg name="y_min" value="-10.0"/>
-    <arg name="y_max" value="-0.2"/>  
+    <arg name="x_min" value="-3.5"/>
+    <arg name="x_max" value="-0.6"/>
+    <arg name="y_min" value="-0.7"/>
+    <arg name="y_max" value="0.7"/>  
     <arg name="z_min" value="-2.5"/>
     <arg name="z_max" value="2.5"/>
   </include>
